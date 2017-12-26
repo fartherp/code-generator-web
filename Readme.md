@@ -2,7 +2,10 @@
 
 ## 集成generator-code-integration
 ```
-需要配置自定义代码的依赖，才会出现相应自定义代码
+可以自定义生成符合自己风格代码结构，配合使用下面地址
+https://github.com/fartherp/generator-code-integration.git
+
+pom.xml中引入自定义的包，即可生成自定义代码
 <dependency>
     <groupId>com.github.fartherp</groupId>
     <artifactId>generatorcode-framework</artifactId>
@@ -24,3 +27,6 @@ changelog里面的code_test.sql
 密  码: root
 U R L: jdbc:mysql://localhost:3306/code_test
 ```
+
+## pom.xml集成tomcat插件,直接使用插件启动
+## 访问主页 http://localhost:8081/code
