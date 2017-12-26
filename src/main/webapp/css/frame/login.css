@@ -1,0 +1,92 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "微软雅黑"
+}
+
+.line {
+    height: 1px;
+    width: 100%;
+    background: #FFFFFF;
+    position: absolute;
+    top: 140px;
+}
+
+.box {
+    position: absolute;
+    left: 35%;
+    top: 200px;
+}
+
+.loginForm {
+    width: 372px;
+    margin: auto auto;
+    margin-top: 13%;
+}
+
+.username {
+    width: 372px;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 15px;
+    border: 0px;
+    background: #fff;
+    text-indent: 1em;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: "fzltcxhjw";
+    color: #CBCBCB;
+}
+
+.password {
+    width: 372px;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 15px;
+    border: 0px;
+    background: #fff;
+    text-indent: 1em;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: "fzltcxhjw";
+    color: #CBCBCB;
+}
+
+.but5 {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    width: 100px;
+    height: 40px;
+    margin: 0 auto;
+    position: absolute;
+    left: 35%;
+    border: 0px;
+    margin-top: 30px;
+    background: #fff;
+    font-size: 18px;
+}
+
+.errorMessages {
+    font-size: 18px;
+    color: white;
+}
+
+.validateCodeInput {
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 15px;
+    border: 0px;
+    background: #fff;
+    text-indent: 1em;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: "fzltcxhjw";
+    color: #CBCBCB;
+}

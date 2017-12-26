@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+            default-autowire="byName">
+
+    <!-- annotation scan -->
+    <context:component-scan base-package="com.github.fartherp.codegenerator.service;com.github.fartherp.codegenerator.dao">
+    </context:component-scan>
+
+    <bean id="responseExceptionHandler" class="com.github.fartherp.framework.core.web.handler.ResponseExceptionHandler"/>
+    <bean id="forwardExceptionHandler" class="com.github.fartherp.framework.core.web.handler.ForwardExceptionHandler"/>
+    <bean id="generalExceptionHandler" class="com.github.fartherp.framework.core.web.handler.GeneralExceptionHandler"/>
+    <bean id="name" class="com.github.fartherp.framework.core.web.handler.CustomizeExceptionHandlerResolver">
+        <property name="exceptions">
+            <list>
+                <ref bean="responseExceptionHandler"/>
+                <ref bean="forwardExceptionHandler"/>
+                <ref bean="generalExceptionHandler"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="kvService" class="com.github.fartherp.framework.core.kv.service.impl.KvServiceImpl">
+    </bean>
+</beans>

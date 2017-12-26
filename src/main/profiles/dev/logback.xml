@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true">
+    <property name="APP" value="code-generator"/>
+    <property name="LOG_HOME" value="/export/log/${APP}"/>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yy-MM-dd.HH:mm:ss.SSS} [%-16t] %-5p %-16c{0} - %m%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="org.springframework" level="DEBUG"/>
+    <logger name="com.github.fartherp.codegenerator" level="DEBUG" />
+
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

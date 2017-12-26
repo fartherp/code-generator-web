@@ -1,0 +1,51 @@
+.north {
+    overflow: hidden;
+    height: 80px;
+    background: url(../../images/resources/layout-browser-hd-bg.gif) #7f99be repeat-x center 50%;
+    line-height: 20px;
+    color: #fff;
+    font-family: Verdana, "微 软 雅 黑, 黑 体";
+}
+
+.northDiv1 {
+    padding-left: 10px;
+    font-size: 16px;
+}
+
+.northDiv1 img {
+    width: 20px;
+    height: 20px;
+}
+
+.northDiv2 {
+    padding-top: 40px;
+}
+
+.headLeft {
+    float: left;
+    padding-left: 20px;
+}
+
+.headRight {
+    float: right;
+    padding-right: 20px;
+}
+
+.headRight a {
+    color: White;
+    text-decoration: underline;
+}
+
+.west {
+    width: 180px;
+}
+
+.center {
+    background: #eee;
+    overflow-y: hidden
+}
+
+.south {
+    height: 30px;
+    background: #D2E0F2;
+}
