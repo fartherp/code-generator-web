@@ -86,6 +86,10 @@
         </developer>
     </developers>
 
+    <build>
+        <finalName>code</finalName>
+    </build>
+
     <profiles>
         <profile>
             <id>dev</id>
