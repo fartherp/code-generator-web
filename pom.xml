@@ -18,7 +18,8 @@
     <description>code-generator-web</description>
 
     <properties>
-        <project-version>1.0.9</project-version>
+        <code-generator-core.version>1.0.0</code-generator-core.version>
+        <farmework-version>1.0.9</farmework-version>
         <encoding.charset>UTF-8</encoding.charset>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <profiles.dir>src/main/profiles</profiles.dir>
@@ -231,7 +232,7 @@
         <dependency>
             <groupId>com.github.fartherp</groupId>
             <artifactId>code-generator-core</artifactId>
-            <version>${version}</version>
+            <version>${code-generator-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
@@ -252,7 +253,7 @@
         <dependency>
             <groupId>com.github.fartherp</groupId>
             <artifactId>generatorcode-framework</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 
@@ -478,17 +479,17 @@
             <dependency>
                 <groupId>com.github.fartherp</groupId>
                 <artifactId>framework-common</artifactId>
-                <version>${project-version}</version>
+                <version>${farmework-version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.fartherp</groupId>
                 <artifactId>framework-core</artifactId>
-                <version>${project-version}</version>
+                <version>${farmework-version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.fartherp</groupId>
                 <artifactId>framework-compress</artifactId>
-                <version>${project-version}</version>
+                <version>${farmework-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
