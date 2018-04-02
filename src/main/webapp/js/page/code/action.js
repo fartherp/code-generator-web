@@ -64,6 +64,9 @@ function doCode() {
         url: "download",
         onSubmit: function(param) {
             param.tableNames = tableNames.toString()
+        },
+        success: function (result) {
+            successJsonToObject(result)
         }
     });
 }

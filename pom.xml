@@ -18,7 +18,7 @@
     <description>code-generator-web</description>
 
     <properties>
-        <code-generator-core.version>1.0.1</code-generator-core.version>
+        <code-generator-core.version>1.0.3-SNAPSHOT</code-generator-core.version>
         <farmework-version>1.0.9</farmework-version>
         <encoding.charset>UTF-8</encoding.charset>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -228,6 +228,11 @@
         <dependency>
             <groupId>com.github.fartherp</groupId>
             <artifactId>generatorcode-framework</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.fartherp</groupId>
+            <artifactId>generatorcode-plt</artifactId>
             <version>1.0.1</version>
         </dependency>
     </dependencies>
