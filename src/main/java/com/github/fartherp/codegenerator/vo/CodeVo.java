@@ -4,7 +4,7 @@
 
 package com.github.fartherp.codegenerator.vo;
 
-import com.github.fartherp.framework.core.vo.BaseVo;
+import com.github.fartherp.framework.database.mybatis.plugin.page.BaseVo;
 
 /**
  * Created by IntelliJ IDEA.

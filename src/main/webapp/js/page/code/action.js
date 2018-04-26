@@ -24,7 +24,7 @@ $(function () {
 
     $.getJSON('../kv/hint?module=1', function(json) {
         $('#generatorType').combobox({
-            data : json.dataList,
+            data : json.data,
             valueField: 'value',
             textField: 'text',
             panelHeight: 'auto'

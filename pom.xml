@@ -18,8 +18,8 @@
     <description>code-generator-web</description>
 
     <properties>
-        <code-generator-core.version>1.0.3-SNAPSHOT</code-generator-core.version>
-        <farmework-version>1.0.9</farmework-version>
+        <code-generator-core.version>1.0.3</code-generator-core.version>
+        <farmework-version>1.2.0</farmework-version>
         <encoding.charset>UTF-8</encoding.charset>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <profiles.dir>src/main/profiles</profiles.dir>
@@ -224,16 +224,26 @@
             <groupId>com.github.fartherp</groupId>
             <artifactId>framework-compress</artifactId>
             <version>${farmework-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.fartherp</groupId>
-            <artifactId>generatorcode-framework</artifactId>
-            <version>1.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.glassfish.web</groupId>
+                    <artifactId>javax.el</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.el</groupId>
+                    <artifactId>javax.el-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.github.fartherp</groupId>
             <artifactId>generatorcode-plt</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.3-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.fartherp</groupId>
+            <artifactId>generatorcode-openservice</artifactId>
+            <version>1.0.3-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
