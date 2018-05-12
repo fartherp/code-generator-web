@@ -1,0 +1,18 @@
+archivesBaseName = "${rootProject.name}-dao"
+
+dependencies {
+	compile project(':slice_gen')
+	compile project(':common')
+	compile project(':pojo')
+	compile group: 'net.sf.ehcache', name: 'ehcache', version: '2.10.4'
+	compile "org.springframework:spring-context-support:4.1.7.RELEASE"
+}
+
+def env = System.getProperty("env", "dev")
+sourceSets {
+	main {
+		resources {
+			srcDir "src/main/profiles/${env}"
+		}
+	}
+}

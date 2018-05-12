@@ -68,7 +68,13 @@ public class CodeGenController extends AbstractController {
         generator.generate();
 
         CommonCompress compress = new ZIP();
-        compress.response(request, response, "代码");
+        String fileName;
+        if (1 == context.getIfGenProject()) {
+            fileName = "代码";
+        } else {
+            fileName = "项目";
+        }
+        compress.response(request, response, fileName);
         compress.source(context.getOut());
         compress.compress();
         FileUtils.deleteDirectory(new File(context.getOut()));

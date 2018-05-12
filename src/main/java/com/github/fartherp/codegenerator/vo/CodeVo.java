@@ -50,6 +50,9 @@ public class CodeVo extends BaseVo {
 
     private String generatorType;
 
+    /** 1：非项目，2：项目 */
+    private Integer ifGenProject;
+
     /**
      * Getter for property 'url'.
      *
@@ -178,5 +181,13 @@ public class CodeVo extends BaseVo {
 
     public void setGeneratorType(String generatorType) {
         this.generatorType = generatorType;
+    }
+
+    public Integer getIfGenProject() {
+        return ifGenProject;
+    }
+
+    public void setIfGenProject(Integer ifGenProject) {
+        this.ifGenProject = ifGenProject;
     }
 }

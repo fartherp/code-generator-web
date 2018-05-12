@@ -50,7 +50,7 @@ function doSearch() {
     $('#list').datagrid('reload');
 }
 
-function doCode() {
+function doCode(ifGenProject) {
     var row = $('#list').datagrid('getChecked');
     if (row.length == 0) {
         $.messager.alert("提示", "请选择需要生成的表", "info");
@@ -64,6 +64,7 @@ function doCode() {
         url: "download",
         onSubmit: function(param) {
             param.tableNames = tableNames.toString()
+            param.ifGenProject = ifGenProject
         },
         success: function (result) {
             successJsonToObject(result)

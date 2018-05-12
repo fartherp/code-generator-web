@@ -1,0 +1,133 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: "eclipse"
+apply plugin: "maven"
+
+repositories {
+	flatDir {
+    	name "local"
+    	dirs "$rootProject.projectDir/lib","$rootProject.projectDir/thirdparty"
+	}
+	
+	maven { url mavenRepo}
+	
+	maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+}
+
+dependencies {
+    compile 'com.alibaba:fastjson:1.2.31'
+    compile "judsf:ju-common:${judsfVersion}"
+    compile "judsf:ju-dataagent:${judsfVersion}"
+    compile "judsf:ju-dataagentclient:${judsfVersion}"
+    compile "judsf:ju-dispatch:${judsfVersion}"
+    compile "judsf:ju-logger2:${judsfVersion}"
+    compile "judsf:ju-outproxy:${judsfVersion}"
+    compile "judsf:ju-redis:${judsfVersion}"
+    testCompile "junit:junit:4.12"
+    // https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
+    compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.8.10'
+
+}
+
+if (prefix == null || prefix.length() == 0) {
+    throw new GradleException("prefix is not configured, please verify prefix is properly configured.");
+}
+
+ext {
+    compileJava.options.encoding = 'UTF-8'
+    compileTestJava.options.encoding = 'UTF-8'
+    jarDir = prefix + "/lib64"
+    binDir = prefix + "/bin"
+    configDir = prefix + "/config" 
+    thirdDir = prefix + "/thirdparty" 
+    libDir = "$rootProject.projectDir/lib"
+    generatedDir = "$project.buildDir/generated"
+}
+
+
+def pomName = "${libDir}/${rootProject.name}-${project.name}-${project.version}.pom"
+task writeNewPom {
+    outputs.file file(pomName)
+} << {
+    pom {
+        project {
+            url 'https://zeroc.com'
+            packaging 'jar'
+            licenses {
+                license {
+                    name 'GNU General Public License, version 2'
+                    url 'https://www.gnu.org/licenses/gpl-2.0.html'
+                    distribution 'repo'
+                }
+            }
+        }
+    }.writeTo(pomName)
+}
+jar.dependsOn(writeNewPom)
+
+jar {
+    manifest {
+        attributes("Built-By": "ZeroC, Inc.")
+    }
+    destinationDir = new File("${libDir}")
+}
+
+task sourcesJar(type:Jar, dependsOn: jar){
+    from sourceSets.main.allSource
+    classifier = 'source'
+    destinationDir = new File("${libDir}")
+}
+//assemble.dependsOn(jarSources)
+artifacts { archives sourcesJar } 
+
+compileJava {
+    options.debug = debug
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation" << "-Xlint:-options"
+}
+
+idea.module {
+    excludeDirs -= file(buildDir)
+    buildDir.listFiles({d, f ->f != 'generated-src'} as FilenameFilter).each { excludeDirs += it }
+}
+
+clean {
+    delete("${libDir}/${rootProject.name}-${jar.archiveName}")
+    delete("${libDir}/${rootProject.name}-${project.name}-${project.version}-source.jar")
+    delete("${pomName}")
+}
+
+task thirdlibs(type: Copy, overwrite: true) {
+    from configurations.runtime
+    exclude '**/*exchange-*.jar'
+    into "${thirdDir}"
+}
+
+task install(type: Copy, overwrite: true, dependsOn: thirdlibs) {
+    copy{
+        from "${libDir}/${rootProject.name}-${jar.archiveName}"
+        //from "${libDir}/${project.name}-${project.version}-source.jar"
+        //from "${pomName}"
+        into "${jarDir}"
+    }
+    copy{
+        from "$rootProject.projectDir/gradlew"
+        from "$rootProject.projectDir/gradlew.bat"
+        from "$rootProject.projectDir/build.gradle"
+        from "$rootProject.projectDir/gradle.properties"
+        into "${configDir}"
+    }
+    copy{
+        from "$rootProject.projectDir/gradle"
+        into "${configDir}/gradle"
+    }
+}
+
+def setMainClass(mainClass) {
+    jar.manifest.attributes("Main-Class": "$mainClass")
+}
+ext {
+    setMainClass = this.&setMainClass
+}

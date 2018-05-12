@@ -1,0 +1,30 @@
+archivesBaseName = "${rootProject.name}-client"
+
+dependencies {
+    compile project(':slice_gen')
+    compile project(':common')
+
+    // 依赖maven中不存在的jar
+    ext.jarTree = fileTree(dir: 'libs', include: '**/*.jar')
+    ext.rootProjectLibs = new File(rootProject.rootDir, 'libs').getAbsolutePath()
+    ext.jarTree += fileTree(dir: rootProjectLibs, include: '**/*.jar')
+
+    testCompile jarTree
+
+    testCompile(
+            "org.mockito:mockito-all:1.10.8",
+            "org.powermock:powermock-api-mockito:1.6.1",
+            "org.powermock:powermock-module-junit4:1.6.1",
+            "org.springframework:spring-test:4.1.7.RELEASE",
+            "junit:junit:4.12",
+    )
+}
+
+def env = System.getProperty("env", "dev")
+sourceSets {
+    main {
+        resources {
+            srcDir "src/main/profiles/${env}"
+        }
+    }
+}

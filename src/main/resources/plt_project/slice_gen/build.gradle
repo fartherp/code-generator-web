@@ -1,0 +1,44 @@
+archivesBaseName = "${rootProject.name}-slice_gen"
+
+buildscript {
+    repositories {
+        flatDir {
+            name "pluginLocal"
+            dirs "$rootProject.projectDir/gradle/plugin"
+        }
+    }
+    dependencies {
+        classpath group: 'com.zeroc.gradle.ice-builder', name: 'slice', version: '1.4.0'
+    }
+}
+
+apply plugin: 'slice'
+
+
+//if( slice.iceVersion != iceVersion ){
+//	throw new GradleException("slice version error.  need=$iceVersion  but now=$slice.iceVersion")
+//}
+
+slice {
+	output = new File("${projectDir}/src/main/java")
+	java {
+		include = ["$rootProject.projectDir/slice_src"]
+ 	  	args = "--ice --stream --underscore"	
+   		srcDir = new File("$rootProject.projectDir/slice_src")
+  	}
+}
+
+dependencies {
+	compile "com.zeroc:ice:3.6.3"
+	compile "com.zeroc:glacier2:3.6.3"
+}
+
+task cleanSlice {
+	doLast {
+		delete("${projectDir}/src/main/java")
+	}
+}
+
+clean.dependsOn('cleanSlice')
+
+
