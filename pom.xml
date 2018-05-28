@@ -18,11 +18,11 @@
     <description>code-generator-web</description>
 
     <properties>
-        <code-generator-core.version>1.0.4-SNAPSHOT</code-generator-core.version>
-        <farmework-version>1.2.3-SNAPSHOT</farmework-version>
         <encoding.charset>UTF-8</encoding.charset>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <profiles.dir>src/main/profiles</profiles.dir>
+        <code-generator-core.version>1.0.4</code-generator-core.version>
+        <farmework-version>2.0.1</farmework-version>
         <testng.version>6.8.8</testng.version>
         <servlet-api.version>2.5</servlet-api.version>
         <mockito.version>1.10.19</mockito.version>
